@@ -16,6 +16,7 @@ body {
     overflow: hidden;
     text-align: center;
     color: white;
+    transition: 1s;
 }
 
 .container {
@@ -24,15 +25,14 @@ body {
 
 h1 {
     font-size: 38px;
-    margin-bottom: 10px;
 }
 
-p {
-    font-size: 18px;
+h2 {
+    margin-top: 10px;
 }
 
 img {
-    width: 200px;
+    width: 220px;
     border-radius: 20px;
     margin: 20px 0;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -59,29 +59,23 @@ button {
     position: absolute;
 }
 
-.heart {
-    position: absolute;
-    font-size: 20px;
-    animation: float 3s linear infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-200px); opacity: 0; }
+.final-message {
+    font-size: 50px;
+    font-weight: bold;
+    display: none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="container" id="content">
     <h1>Martina 💖</h1>
     <p>Dal 25/01/2025 la mia vita è cambiata...</p>
     <p>Ogni giorno con te è speciale.</p>
     <h2>Vuoi essere la mia Valentina? 💌</h2>
 
-    <!-- FOTO -->
-    <img src="foto.jpg" alt="Noi">
+    <img src="foto.jpg.jpg" alt="Noi">
 
     <div>
         <button id="yes">Sì 💖</button>
@@ -89,20 +83,25 @@ button {
     </div>
 </div>
 
-<!-- MUSICA -->
-<audio id="music" src="musica.mp3"></audio>
+<div class="final-message" id="final">
+    Lo sapevo ❤️
+</div>
+
+<!-- YOUTUBE NASCOSTO -->
+<iframe id="ytplayer"
+        width="0"
+        height="0"
+        src=""
+        frameborder="0"
+        allow="autoplay">
+</iframe>
 
 <script>
 const noButton = document.getElementById("no");
 const yesButton = document.getElementById("yes");
-const music = document.getElementById("music");
-
-
-// MUSICA parte al primo movimento del mouse
-document.body.addEventListener("click", () => {
-    music.play();
-}, { once: true });
-
+const content = document.getElementById("content");
+const finalMessage = document.getElementById("final");
+const yt = document.getElementById("ytplayer");
 
 // NO si muove continuamente
 function moveButton() {
@@ -112,23 +111,23 @@ function moveButton() {
     noButton.style.top = y + "px";
 }
 
-setInterval(moveButton, 700);
+setInterval(moveButton, 600);
 
 
-// SÌ fa esplodere cuori
+// QUANDO CLICCA SI
 yesButton.addEventListener("click", () => {
-    for (let i = 0; i < 60; i++) {
-        let heart = document.createElement("div");
-        heart.innerHTML = "💖";
-        heart.classList.add("heart");
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = Math.random() * window.innerHeight + "px";
-        document.body.appendChild(heart);
 
-        setTimeout(() => {
-            heart.remove();
-        }, 3000);
-    }
+    // Nasconde tutto
+    content.style.display = "none";
+
+    // Cambia sfondo
+    document.body.style.background = "linear-gradient(135deg, #ff2e63, #ff6f91)";
+
+    // Mostra messaggio finale
+    finalMessage.style.display = "block";
+
+    // INSERISCI QUI IL LINK YOUTUBE
+    yt.src = "https://www.youtube.com/embed/z4nhDtkzhRg?autoplay=1";
 });
 </script>
 
