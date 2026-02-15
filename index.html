@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Per Martina ❤️</title>
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    max-width: 90%;
+}
+
+h1 {
+    font-size: 38px;
+}
+
+p {
+    font-size: 18px;
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.buttons {
+    margin-top: 30px;
+    position: relative;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yes {
+    background-color: #ff2e63;
+    color: white;
+}
+
+#no {
+    background-color: white;
+    color: #ff2e63;
+    position: absolute;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 3s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-200px); opacity: 0; }
+}
+
+.hidden {
+    display: none;
+}
+
+.final-message {
+    font-size: 26px;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Martina 💖</h1>
+    <p>Dal 25/01/2025 la mia vita è cambiata…</p>
+    <p>Ogni giorno con te è speciale.</p>
+
+    <img src="foto.jpg" alt="Noi">
+
+    <div class="buttons">
+        <button id="yes">Sì 💖</button>
+        <button id="no">No 😈</button>
+    </div>
+
+    <div id="final" class="hidden final-message">
+        Sapevo che avresti detto sì ❤️  
+        Ti amo tantissimo.
+    </div>
+</div>
+
+<!-- SOSTITUISCI ABC123XYZ con il codice della tua canzone -->
+<iframe id="music" class="hidden"
+width="0" height="0"
+src="https://www.youtube.com/embed/z4nhDtkzhRg?autoplay=1"
+frameborder="0"
+allow="autoplay">
+</iframe>
+
+<script>
+const noButton = document.getElementById("no");
+const yesButton = document.getElementById("yes");
+const finalMessage = document.getElementById("final");
+const music = document.getElementById("music");
+
+noButton.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+});
+
+yesButton.addEventListener("click", () => {
+    finalMessage.classList.remove("hidden");
+    music.classList.remove("hidden");
+
+    for (let i = 0; i < 50; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 3000);
+    }
+});
+</script>
+
+</body>
+</html>
