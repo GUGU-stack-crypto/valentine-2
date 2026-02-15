@@ -99,8 +99,8 @@ const music = document.getElementById("music");
 
 
 // MUSICA parte al primo movimento del mouse
-document.body.addEventListener("mousemove", () => {
-    music.play().catch(() => {});
+document.body.addEventListener("click", () => {
+    music.play();
 }, { once: true });
 
 
